@@ -53,7 +53,10 @@ class IoT_Controller:
             conditions_met = all(IoT_Controller.evaluate_condition(IoT_Controller.mqtt_data, condition) for condition in rule["conditions"])
 
             if conditions_met:
-                print("do it!")
+                # todo: call the events to happen
+                for message in rule["results"]:
+                    IoT_Controller.client.publish(message["topic"],message["value"])
+#                    print(f"Sending {message[value]} to {message[topic]}")
 
     def evaluate_condition(data, condition):
 #        {"topic":"kitchen/lighting","comparison":"<","value":30},

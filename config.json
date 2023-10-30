@@ -1,6 +1,15 @@
 [
     {"conditions":
         [
+            {"topic":"bathroom/humidity","comparison":">","value":50}
+        ],
+     "results":
+        [
+            {"topic":"bathroom/fan","value":"on"}
+        ]
+    },
+    {"conditions":
+        [
             {"topic":"kitchen/lighting","comparison":"<","value":30},
             {"topic":"house/time","comparison":">","value":6}
         ],
