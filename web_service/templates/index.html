@@ -6,5 +6,31 @@
 <body>
     <h1>Simple Flask Application</h1>
     <p>Flask applications allow us to serve data and output from Python programs.</p>
+
+    <div>
+        <label>Topic:<input type="text" id="topic" placeholder="enter a topic" /></label>
+        <button onclick="getData()">Get the data</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function getData(){
+            user_topic = document.getElementById('topic').value;
+            url = '/historian?topic=${user_topic}'
+
+            fetch(url)
+               .then(response => response.json())
+               .then(data => displayData(data));
+        }
+
+        function displayData(data){
+            resultDiv=document.getElementById("result");
+
+            resultDiv.innerHTML = 'Tada:' + data;
+        }
+
+    </script>
+
 </body>
 </html>
