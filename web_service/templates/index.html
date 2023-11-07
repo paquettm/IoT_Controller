@@ -17,7 +17,9 @@
     <script>
         function getData(){
             user_topic = document.getElementById('topic').value;
-            url = '/historian?topic=${user_topic}'
+            user_topic = encodeURIComponent(user_topic); //URI encoding so all characters (esp. #) get sent
+
+            url = `/historian?topic=${user_topic}`  // use backticks here to get string substitution
 
             fetch(url)
                .then(response => response.json())

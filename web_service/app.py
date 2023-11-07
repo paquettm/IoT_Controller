@@ -26,10 +26,7 @@ def historian():
     topic = request.args.get('topic',"#")
     timestamp = request.args.get('timestamp',"1970-01-01 00:00:00")
 
-    # todo replace the # by the SQL wildcard (%)
-#    topic = topic.replace("#",'\%')
-
-    print(topic)
+    topic = topic.replace('#','%')
 
     SQL = "SELECT timestamp, topic, payload FROM historian_data WHERE timestamp >= ? and topic LIKE ?"
 
