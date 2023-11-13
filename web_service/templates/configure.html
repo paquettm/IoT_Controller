@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System configuration</title>
+</head>
+<body>
+    <h1>Configure the system</h1>
+
+<h2>Add a configuration</h2>
+
+<a href='/'>Back to the index</a>
+
+    <form action='/add_configuration' method='post'><!--sends data like an attachment in an email -->
+        <label for="topic">MQTT Topic:</label>
+        <input type="text" id='topic' name="topic" placeholder="Topic">
+        <label for="comparison">Comparison operator:</label>
+        <input type="text" id='comparison' name="comparison" placeholder=">, >=, <, etc.">
+        <label for="value">Comparison value:</label>
+        <input type="text" id='value' name="value" placeholder="50">
+
+        <label for="result_topic">Result topic:</label>
+        <input type="text" id='result_topic' name="result_topic" placeholder="Topic">
+        <label for="result_value">Result value:</label>
+        <input type="text" id='result_value' name="result_value" placeholder="On!">
+        <input type='submit' value='Send!' />
+    </form>
+
+    <form action='/delete_configuration' method='post'>
+        <select name='rule_to_delete'>
+            {% for index in range(config|length) %}
+                <option value='{{ index }}'>{{ config[index] }}</option>
+            {% endfor %}
+        </select>
+        <input type='submit' value='Delete configuration' />
+    </form>
+
+
+
+</body>
+</html>
